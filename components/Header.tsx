@@ -1,25 +1,17 @@
 'use client';
 import { useEffect } from 'react';
 import Link from 'next/link';
+import CommandPalette from './CommandPalette';
+import { navigation } from '@/data/nav';
 
 const Header = () => {
   return (
-    <header className="h-14 bg-white">
-      <nav>
+    <header>
+      <nav className="flex h-14 items-center gap-2 bg-white">
         <Link href="/">Logo</Link>
-        <ul className="flex">
-          <li>
-            <Link href="/about">About</Link>
-          </li>
-        </ul>
-        {/* <div className="burger">
-          <div className="line1"></div>
-          <div className="line2"></div>
-          <div className="line3"></div>
-        </div>
-        <div className="search">
-          <i className="fas fa-search"></i>
-        </div> */}
+        <Link href="/about">About</Link>
+        <Link href="/blog">Blog</Link>
+        <CommandPalette navigation={navigation} />
       </nav>
     </header>
   );
