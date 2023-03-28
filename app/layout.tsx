@@ -1,5 +1,10 @@
-import Header from '@/components/Header';
+import dynamic from 'next/dynamic';
+
 import '@/styles/globals.css';
+
+const Header = dynamic(() => import('@/components/Header'), {
+  ssr: false,
+});
 
 export const metadata = {
   title: 'Create Next App',

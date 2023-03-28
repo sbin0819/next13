@@ -5,12 +5,21 @@ import { HiSearch } from 'react-icons/hi';
 import { useRouter } from 'next/navigation';
 import { FiCommand } from 'react-icons/fi';
 import { motion } from 'framer-motion';
-// import useSound from 'use-sound';
+import useSound from 'use-sound';
 
-export default function CommandPalette({ navigation }: any) {
+interface Props {
+  pages: {
+    name: string;
+    href: string;
+  }[];
+}
+
+export default function CommandPalette({ navigation }: { navigation: Props }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
+
+  const [ThemeSound] = useSound('/static/sounds/open.mp3');
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -27,10 +36,8 @@ export default function CommandPalette({ navigation }: any) {
     setIsOpen(!isOpen);
   };
 
-  //   const [ThemeSound] = useSound('/static/sounds/open.mp3');
-
   const filterednavigation = query
-    ? navigation.pages.filter((page: any) =>
+    ? navigation.pages.filter((page) =>
         page.name.toLowerCase().includes(query.toLocaleLowerCase()),
       )
     : navigation.pages;
@@ -46,10 +53,10 @@ export default function CommandPalette({ navigation }: any) {
         transition={{ duration: 0.1, ease: 'easeIn' }}
         onClick={() => {
           toggleIcon();
-          //   ThemeSound();
+          ThemeSound();
         }}
       >
-        <FiCommand />
+        <FiCommand color="#fff" />
       </motion.button>
       <Transition.Root
         show={isOpen}

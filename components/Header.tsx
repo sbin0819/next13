@@ -1,8 +1,10 @@
 'use client';
 import { useEffect } from 'react';
 import Link from 'next/link';
-import CommandPalette from './CommandPalette';
 import { navigation } from '@/data/nav';
+import dynamic from 'next/dynamic';
+import CommandPalette from './CommandPalette';
+import DropMenu from './DropMenu';
 
 const Header = () => {
   return (
@@ -12,6 +14,7 @@ const Header = () => {
         <Link href="/about">About</Link>
         <Link href="/blog">Blog</Link>
         <CommandPalette navigation={navigation} />
+        <DropMenu />
       </nav>
     </header>
   );

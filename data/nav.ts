@@ -1,6 +1,7 @@
 export const navigation = {
   pages: [
     { name: 'Home', href: '/' },
+    { name: 'Posts', href: '/posts' },
     { name: 'Blog', href: '/blog' },
     { name: 'About', href: '/about' },
 
