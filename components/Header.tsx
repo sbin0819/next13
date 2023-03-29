@@ -1,10 +1,9 @@
 'use client';
-import { useEffect } from 'react';
 import Link from 'next/link';
 import { navigation } from '@/data/nav';
-import dynamic from 'next/dynamic';
 import CommandPalette from './CommandPalette';
 import DropMenu from './DropMenu';
+import ThemeSwitch from './ThemeSwitch';
 
 const Header = () => {
   return (
@@ -14,6 +13,7 @@ const Header = () => {
         <Link href="/about">About</Link>
         <Link href="/blog">Blog</Link>
         <CommandPalette navigation={navigation} />
+        <ThemeSwitch />
         <DropMenu />
       </nav>
     </header>
