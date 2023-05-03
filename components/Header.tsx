@@ -7,13 +7,18 @@ import ThemeSwitch from './ThemeSwitch';
 
 const Header = () => {
   return (
-    <header>
-      <nav className="flex h-14 items-center gap-2 bg-white">
+    <header className="flex h-14 items-center bg-white">
+      <div>
         <Link href="/">Logo</Link>
-        <Link href="/about">About</Link>
+      </div>
+      <nav className="flex items-center gap-2">
+        <Link href="/">Home</Link>
         <Link href="/blog">Blog</Link>
+        <Link href="/projects">Projects</Link>
+        <Link href="/about">About</Link>
+        <Link href="/guestbook">Guestbook</Link>
         <CommandPalette navigation={navigation} />
-        <ThemeSwitch />
+        {/* <ThemeSwitch /> */}
         <DropMenu />
       </nav>
     </header>
