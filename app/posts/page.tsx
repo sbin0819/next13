@@ -1,3 +1,9 @@
+'use client';
+import About from '@/data/_posts/about.mdx';
 export default function Page() {
-  return <div>posts</div>;
+  return (
+    <div>
+      <About />
+    </div>
+  );
 }

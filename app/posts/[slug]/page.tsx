@@ -1,20 +1,14 @@
-import { getSlugs, getPost } from '@/lib/posts';
-
+import { postFilePaths, getPost } from '@/utils/mdxUtils';
+import MDXContent from './MDX';
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const slugs = await getSlugs();
+  const files = await postFilePaths;
 
-  return slugs.map((slug) => ({ slug }));
+  return files.map((slug) => ({ slug }));
 }
 
 export default async function Post({ params }: { params: any }) {
-  const { Content, metadata } = await getPost(params.slug + '.mdx'); // ← here
-
-  return (
-    <main>
-      {metadata.title && <h1>{metadata.title}</h1>}
-      <Content />
-    </main>
-  );
+  const { content, source } = await getPost(params.slug);
+  return <MDXContent source={source} />;
 }
