@@ -30,3 +30,8 @@ export const getPost = async (slug: string) => {
 
   return { content, metadata: frontmatter, fileContents, source };
 };
+
+export const getPosts = async () => {
+  const posts = postFilePaths.map((slug) => getPost(slug));
+  return Promise.all(posts.map(async (post) => (await post).metadata));
+};
