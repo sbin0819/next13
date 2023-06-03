@@ -1,9 +1,11 @@
 import dynamic from 'next/dynamic';
+import { HeaderLoading } from '@/components/Header';
 
 import '@/styles/globals.css';
 
 const Header = dynamic(() => import('@/components/Header'), {
   ssr: false,
+  loading: () => <HeaderLoading />,
 });
 
 export const metadata = {
@@ -18,11 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <div className="h-[100vh] bg-gray-900">
-          <Header />
-          <div className="text-white">{children}</div>
-        </div>
+      <body className="min-h-[calc(100vh-56px)] bg-gray-900">
+        <Header />
+        <main className="text-white">{children}</main>
       </body>
     </html>
   );
