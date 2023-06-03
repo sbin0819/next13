@@ -3,6 +3,13 @@ import path from 'path';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { serialize } from 'next-mdx-remote/serialize';
 
+export type PostData = {
+  title: string;
+  href: string;
+  slug: string;
+  [key: string]: string;
+};
+
 // POSTS_PATH is useful when you want to get the path to a specific file
 export const POSTS_PATH = path.join(process.cwd(), 'data/_posts');
 
@@ -28,7 +35,7 @@ export const getPost = async (slug: string) => {
 
   const source = await serialize(fileContents, { parseFrontmatter: true });
 
-  return { content, metadata: frontmatter, fileContents, source };
+  return { content, metadata: { ...frontmatter, slug }, fileContents, source };
 };
 
 export const getPosts = async () => {
