@@ -8,15 +8,13 @@ import ThemeSwitch from './ThemeSwitch';
 const Header = () => {
   return (
     <header className="sticky top-0 z-10 flex h-14 items-center bg-white">
-      <div>
+      <div className="mr-4 flex items-center">
         <Link href="/">Logo</Link>
       </div>
-      <nav className="flex items-center gap-2">
+      <nav className="flex items-center gap-4">
         <Link href="/">Home</Link>
+        <Link href="/posts">Posts</Link>
         <Link href="/projects">Projects</Link>
-        {/* <Link href="/blog">Blog</Link> */}
-        {/* <Link href="/about">About</Link> */}
-        {/* <Link href="/guestbook">Guestbook</Link> */}
         <CommandPalette navigation={navigation} />
         <DropMenu />
         {/* <ThemeSwitch /> */}
