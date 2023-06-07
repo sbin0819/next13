@@ -1,10 +1,9 @@
 import { expect, test } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
-import Tab from './Tab';
+import Header from './Header';
 
 test('renders a heading', async () => {
-  render(<Tab />);
-  const tab = screen.getByRole('tab');
-  console.log(tab);
+  render(<Header />);
+  const heading = screen.getByRole('heading');
   // expect().toBeDefined()
 });

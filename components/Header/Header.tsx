@@ -1,13 +1,17 @@
 'use client';
 import Link from 'next/link';
 import { navigation } from '@/data/nav';
-import CommandPalette from './CommandPalette';
-import DropMenu from './DropMenu';
-import ThemeSwitch from './ThemeSwitch';
+import CommandPalette from '../CommandPalette';
+import DropMenu from '../DropMenu';
+// import ThemeSwitch from './ThemeSwitch';
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-10 flex h-14 items-center bg-white">
+    <header
+      className="sticky top-0 z-10 flex h-14 items-center bg-white"
+      role="heading"
+      aria-level={1}
+    >
       <div className="mr-4 flex items-center">
         <Link href="/">Logo</Link>
       </div>

@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { HeaderLoading } from '@/components/Header';
+import { HeaderLoading } from '@/components/Header/Header';
 
 import '@/styles/globals.css';
 

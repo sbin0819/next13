@@ -1,5 +1,5 @@
 import { postFilePaths, getPost } from '@/utils/mdxUtils';
-import MDXContent from './MDX';
+import MDXContent from '@/components/MDXContent';
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
