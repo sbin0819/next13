@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "commit": "git-cz",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -44,12 +45,16 @@
     "zustand": "^4.3.8"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.5",
     "@tailwindcss/typography": "^0.5.9",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@vitejs/plugin-react": "^4.0.0",
     "@vitest/ui": "^0.32.0",
     "autoprefixer": "^10.4.14",
+    "commitizen": "^4.3.0",
+    "config-conventional": "link:@@commitlint/config-conventional",
+    "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.3",
     "jsdom": "^22.1.0",
     "lint-staged": "^13.2.0",
