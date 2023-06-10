@@ -14,52 +14,52 @@ href: about
 **예시 1**  
 return 을 통한 외부 전달
 
-```
+```js
 function outer() {
-  let num = 0
+  let num = 0;
   function inner() {
-   return num += 1;
+    return (num += 1);
   }
-  return inner
+  return inner;
 }
 
-let increment = outer() // outer 의 num 을 참조하는 increment 라는 식별자가 있기 때문에 클로져로 사용 가능해짐
-increment() // 1
-increment() // 2
-incremnt = null // 메모리 회수
-const increment2 = outer() // 새로운 클로저
-increment2() // 1
+let increment = outer(); // outer 의 num 을 참조하는 increment 라는 식별자가 있기 때문에 클로져로 사용 가능해짐
+increment(); // 1
+increment(); // 2
+incremnt = null; // 메모리 회수
+const increment2 = outer(); // 새로운 클로저
+increment2(); // 1
 ```
 
 **예시 2-1**  
 return 없이 외부 전달
 
-```
+```js
 (function () {
-var a = 0;
-   var intervalId = null;
-   var inner = function () {
-     if(++a >= 10) {
-  clearInterval(intervalId)
-        console.log('done')
-        }
-      console.log(a)
+  var a = 0;
+  var intervalId = null;
+  var inner = function () {
+    if (++a >= 10) {
+      clearInterval(intervalId);
+      console.log('done');
     }
-intervalId = setInterval(inner, 300);
-})()
+    console.log(a);
+  };
+  intervalId = setInterval(inner, 300);
+})();
 ```
 
 **예시 2-2**  
 return 없이 외부 전달
 
-```
+```js
 (function () {
-var count = 0;
-var button = document.createElement("button");
-button.innerText = "click";
-button.addEventListener("click", function () {
-console.log(++count, "times, clicked");
-});
-document.body.appendChild(button);
+  var count = 0;
+  var button = document.createElement('button');
+  button.innerText = 'click';
+  button.addEventListener('click', function () {
+    console.log(++count, 'times, clicked');
+  });
+  document.body.appendChild(button);
 })();
 ```

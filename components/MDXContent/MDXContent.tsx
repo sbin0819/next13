@@ -23,9 +23,12 @@ const ResponsiveImage = (props: ImageProps) => (
 
 const components = {
   h1: (props: HTMLAttributes<HTMLHeadingElement>) => (
-    <h1 {...props} className="text-2xl font-bold" />
+    <h1 {...props} className="text-4xl font-bold" />
   ),
   h2: (props: HTMLAttributes<HTMLHeadingElement>) => (
+    <h2 {...props} className="text-2xl font-bold" />
+  ),
+  h3: (props: HTMLAttributes<HTMLHeadingElement>) => (
     <h2 {...props} className="text-xl font-bold" />
   ),
   p: (props: HTMLAttributes<HTMLParagraphElement>) => (
