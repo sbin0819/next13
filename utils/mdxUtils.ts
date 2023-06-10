@@ -3,9 +3,6 @@ import path from 'path';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { serialize } from 'next-mdx-remote/serialize';
 
-import { remarkCodeHike } from '@code-hike/mdx';
-const theme = require('shiki/themes/monokai.json');
-
 export type PostData = {
   title: string;
   href: string;

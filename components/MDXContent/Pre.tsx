@@ -1,13 +1,17 @@
-import { useState, useRef, ReactNode } from 'react';
+import { useState, useRef } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { darcula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 interface PreProps {
-  children: ReactNode;
+  children: any;
 }
 
 const Pre = (props: PreProps) => {
   const textInput = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  const language = props?.children?.props.className?.replace('language-', '');
 
   const onEnter = () => {
     setHovered(true);
@@ -29,7 +33,7 @@ const Pre = (props: PreProps) => {
       ref={textInput}
       onMouseEnter={onEnter}
       onMouseLeave={onExit}
-      className="relative overflow-x-auto rounded-md bg-slate-800 px-4 py-4"
+      className="relative"
     >
       {hovered && (
         <button
@@ -68,7 +72,9 @@ const Pre = (props: PreProps) => {
         </button>
       )}
 
-      <pre>{props.children}</pre>
+      <SyntaxHighlighter style={darcula} language={language}>
+        {props.children.props.children}
+      </SyntaxHighlighter>
     </div>
   );
 };
