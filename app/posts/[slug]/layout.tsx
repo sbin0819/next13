@@ -1,7 +1,13 @@
+import '@code-hike/mdx/dist/index.css';
+
 export default function PostLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <main className="mx-auto max-w-[1000px]">{children}</main>;
+  return (
+    <>
+      <main className="mx-auto max-w-[1000px]">{children}</main>
+    </>
+  );
 }

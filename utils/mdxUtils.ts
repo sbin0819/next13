@@ -3,10 +3,15 @@ import path from 'path';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { serialize } from 'next-mdx-remote/serialize';
 
+import { remarkCodeHike } from '@code-hike/mdx';
+const theme = require('shiki/themes/monokai.json');
+
 export type PostData = {
   title: string;
   href: string;
   slug: string;
+  createdAt: any;
+  updatedAt: any;
   [key: string]: string;
 };
 
@@ -27,15 +32,25 @@ type Post = {
 export const getPost = async (slug: string) => {
   const fullPath = path.join(POSTS_PATH, `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
-
   const { content, frontmatter } = await compileMDX({
     source: fileContents,
     options: { parseFrontmatter: true },
   });
 
-  const source = await serialize(fileContents, { parseFrontmatter: true });
+  const source = await serialize(fileContents, {
+    parseFrontmatter: true,
+  });
 
-  return { content, metadata: { ...frontmatter, slug }, fileContents, source };
+  const stats = fs.statSync(fullPath);
+  const createdAt = stats.birthtime;
+  const updatedAt = stats.mtime;
+
+  return {
+    content,
+    metadata: { ...frontmatter, slug, createdAt, updatedAt },
+    fileContents,
+    source,
+  };
 };
 
 export const getPosts = async () => {

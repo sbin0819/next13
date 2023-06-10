@@ -1,10 +1,18 @@
 'use client';
-
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote';
-import Image from 'next/image';
-// import { Heading, InlineCode, Pre, Table, Text } from 'my-components'
+import { HTMLAttributes } from 'react';
+import Image from '../Image';
+import Pre from './Pre';
+import CustomLink from './Link';
+import TOCInline from './TOCInline';
 
-const ResponsiveImage = (props: any) => (
+interface ImageProps extends HTMLAttributes<HTMLImageElement> {
+  alt?: string;
+  sizes?: string;
+  style?: React.CSSProperties;
+}
+
+const ResponsiveImage = (props: ImageProps) => (
   <Image
     alt={props.alt}
     sizes="100vw"
@@ -14,13 +22,19 @@ const ResponsiveImage = (props: any) => (
 );
 
 const components = {
-  h1: (props: any) => <h1 {...props} className="text-2xl font-bold" />,
-  h2: (props: any) => <h2 className="text-xl font-bold" />,
-  p: (props: any) => (
-    <p className="text-gray-500 dark:text-gray-400" {...props} />
+  h1: (props: HTMLAttributes<HTMLHeadingElement>) => (
+    <h1 {...props} className="text-2xl font-bold" />
   ),
-  pre: (props: any) => <div {...props} />,
-  code: (props: any) => <code {...props} />,
+  h2: (props: HTMLAttributes<HTMLHeadingElement>) => (
+    <h2 {...props} className="text-xl font-bold" />
+  ),
+  p: (props: HTMLAttributes<HTMLParagraphElement>) => (
+    <p {...props} className="text-gray-500 dark:text-gray-400" />
+  ),
+  pre: (props: any) => <Pre {...props} />,
+  a: (props: any) => <CustomLink {...props} />,
+  TOCInline,
+  Image,
   img: ResponsiveImage,
 };
 
